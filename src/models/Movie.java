@@ -11,6 +11,25 @@ public class Movie {
     public Producer producer;
     public ArrayList<Actor> actors = new ArrayList<>();
 
+    public String getName() {
+        return name;
+    }
+    public String getProducerName(){
+        return producer.firstName;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public short getYear() {
+        return year;
+    }
+
+    public void setYear(short year) {
+        this.year = year;
+    }
+
     public Movie(String name, short year, Genre genre, Producer producer, ArrayList<Actor> actors) {
         this.name = name;
         this.year = year;

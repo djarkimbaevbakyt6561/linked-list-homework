@@ -13,14 +13,17 @@ public class Main {
         boolean exit = false;
         while (!exit) {
             System.out.println("""
-                    1.Все фильмы
-                    2.Найти фильм по названию или по фрагменту
-                    3.Найти фильм по актеру
-                    4.Найти фильм по продюссеру
-                    5.Найти фильм по году
-                    6.Найти фильм по жанру
-                    7.Найти фильм по роли
-                    8.Выйти""");
+                    1. Все фильмы
+                    2. Найти фильм по названию или по фрагменту
+                    3. Найти фильм по актеру
+                    4. Найти фильм по продюссеру
+                    5. Найти фильм по году
+                    6. Найти фильм по жанру
+                    7. Найти фильм по роли
+                    8. Сортировать по название фильма
+                    9. Сортировать по году фильма
+                    10.Сортировать по имени продюссеров
+                    11.Выйти""");
             String num = scanner.nextLine();
             switch (num) {
                 case "1" -> {
@@ -82,7 +85,7 @@ public class Main {
                                 System.out.println(movie);
                             }
                         }
-                    } catch (IllegalArgumentException e){
+                    } catch (IllegalArgumentException e) {
                         System.out.println("Неправильный жанр!");
                     }
 
@@ -97,6 +100,83 @@ public class Main {
                     }
                 }
                 case "8" -> {
+                    try {
+                        System.out.println("Введите по: (1)Возрастанию (2)Убыванию");
+                        int number = scanner.nextInt();
+                        if (number == 1) {
+                            List<Movie> sortedMovies = database.sortByMovieName("Ascending");
+                            System.out.println("По возрастанию:");
+                            for (Movie movie : sortedMovies) {
+                                System.out.println(movie);
+                            }
+                        } else if (number == 2) {
+                            List<Movie> sortedMovies = database.sortByMovieName("Descending");
+                            System.out.println("По убыванию:");
+                            for (Movie movie : sortedMovies) {
+                                System.out.println(movie);
+                            }
+                        } else {
+                            System.out.println("Введите правильное число!");
+                        }
+                        scanner.nextLine();
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Введите число!");
+                    }
+                }
+                case "9" -> {
+                    try {
+                        System.out.println("Введите по: (1)Возрастанию (2)Убыванию");
+                        int number = scanner.nextInt();
+                        if (number == 1) {
+                            List<Movie> sortedMovies = database.sortByYear("Ascending");
+                            System.out.println("По возрастанию:");
+                            for (Movie movie : sortedMovies) {
+                                System.out.println(movie);
+                            }
+                        } else if (number == 2) {
+                            List<Movie> sortedMovies = database.sortByYear("Descending");
+                            System.out.println("По убыванию:");
+                            for (Movie movie : sortedMovies) {
+                                System.out.println(movie);
+                            }
+                        } else {
+                            System.out.println("Введите правильное число!");
+                        }
+                        scanner.nextLine();
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Введите число!");
+                    }
+
+                }
+                case "10" -> {
+                    try {
+                        System.out.println("Введите по: (1)Возрастанию (2)Убыванию");
+                        int number = scanner.nextInt();
+                        if (number == 1) {
+                            List<Movie> sortedMovies = database.sortByProducerName("Ascending");
+                            System.out.println("По возрастанию:");
+                            for (Movie movie : sortedMovies) {
+                                System.out.println(movie);
+                            }
+                        } else if (number == 2) {
+                            List<Movie> sortedMovies = database.sortByProducerName("Descending");
+                            System.out.println("По убыванию:");
+                            for (Movie movie : sortedMovies) {
+                                System.out.println(movie);
+                            }
+                        } else {
+                            System.out.println("Введите правильное число!");
+                        }
+                        scanner.nextLine();
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Введите число!");
+                    }
+
+                }
+                case "11" -> {
                     exit = true;
                     System.out.println("Вы успешно вышли!");
                 }
